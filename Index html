@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Say sorry ChatGPT?</title>
+  <style>
+    :root{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial}
+    body{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f6f7fb;margin:0}
+    .card{background:#fff;padding:32px;border-radius:12px;box-shadow:0 6px 24px rgba(24,39,75,0.08);text-align:center;max-width:420px;width:90%}
+    h1{margin:0 0 18px;font-size:20px}
+    .buttons{display:flex;gap:12px;justify-content:center}
+    button{padding:10px 20px;border-radius:8px;border:1px solid #d0d6e6;background:#eef2ff;cursor:pointer;font-weight:600}
+    button:active{transform:translateY(1px)}
+    .link{display:inline-block;margin-top:16px;color:#4b6bff;text-decoration:none;font-size:14px}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Do you like ChatGPT?</h1>
+    <div class="buttons">
+      <button id="yes1">Yes</button>
+      <button id="yes2">Yessssss</button>
+    </div>
+    <a class="link" href="#" id="resultLink">Click here to open this question in a new tab</a>
+  </main>
+
+  <script>
+    // Both buttons show the same response. You can change behavior if you want.
+    function handleYes(source){
+      alert('Thanks! You clicked Yes (' + source + ').');
+    }
+
+    document.getElementById('yes1').addEventListener('click', function(){ handleYes('button 1'); });
+    document.getElementById('yes2').addEventListener('click', function(){ handleYes('button 2'); });
+
+    // Make the link open this same page (useful if you save it and want a shareable link)
+    document.getElementById('resultLink').addEventListener('click', function(e){
+      e.preventDefault();
+      // If this file is hosted somewhere, replace window.location.href with that URL.
+      const html = document.documentElement.outerHTML;
+      const blob = new Blob([html], {type: 'text/html'});
+      const url = URL.createObjectURL(blob);
+      window.open(url, '_blank');
+    });
+  </script>
+</body>
+</html>
